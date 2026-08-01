@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="org.wadophone.ui.call.conference.viewmodel.ConferenceViewModel" />
+        <variable
+            name="viewModel"
+            type="org.wadophone.ui.call.viewmodel.CurrentCallViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/call_main_actions_menu_height"
+        android:background="@drawable/shape_call_bottom_sheet_background">
+
+        <ImageView
+            android:onClick="@{() -> viewModel.toggleExpandActionsMenu()}"
+            android:id="@+id/call_actions_handle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="11dp"
+            android:src="@drawable/animated_caret_to_handle"
+            android:contentDescription="@string/content_description_toggle_bottom_sheet"
+            app:tint="@color/bc_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+                          <!-- ============================================================
+                  There are TWO complete, independent sets of the 4 "always
+                  present" buttons (hang_up/toggle_video/toggle_mute_mic/
+                  change_audio_output), each one living inside its OWN nested
+                  ConstraintLayout (instead of directly inside the root one),
+                  stacked on top of each other and toggled purely through
+                  visibility depending on viewModel.showDoorOpenerButton:
+
+                  - "actions_on_group" is used when the door opener button IS
+                    shown (5 buttons total): all 5 buttons belong to a single
+                    "spread" horizontal chain, which is what keeps them evenly
+                    centered across the whole row width.
+
+                  - "actions_off_group" is used when the door opener button is
+                    hidden (4 buttons total): "hang_up_off" is deliberately left
+                    OUT of any chain (it just sits flush at the start of the
+                    row, like a normal, wider button), while the other 3 form
+                    their own separate "packed" chain pushed to the end of the
+                    row. This exactly matches the button positions/sizes/margins
+                    used in "call_ended_actions.xml" for its (only) 4-button
+                    layout, so that when the call ends there's no jarring jump
+                    in button positions, just a color change to the disabled
+                    look.
+
+                  Using two separate NESTED ConstraintLayouts (rather than just
+                  two sets of views directly inside the same root one) guarantees
+                  the two chains are resolved 100% independently from one
+                  another, with no risk of one chain's "chainStyle"/bias
+                  influencing the other's measurements. -->
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:id="@+id/actions_on_group"
+                 android:visibility="@{viewModel.showDoorOpenerButton ? View.VISIBLE : View.GONE}"
+                 android:layout_width="0dp"
+                 android:layout_height="0dp"
+                 app:layout_constraintTop_toBottomOf="@id/call_actions_handle"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent">
+
+                 <!-- ################ 5-buttons set (door opener shown) ################ -->
+
+                 <ImageView
+                     android:onClick="@{() -> viewModel.hangUp()}"
+                     android:id="@+id/hang_up"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@drawable/phone_disconnect"
+                     android:contentDescription="@string/content_description_hang_up_call"
+                     android:background="@drawable/squircle_red_button_background"
+                     app:tint="@color/bc_white"
+                     app:layout_constraintHorizontal_chainStyle="spread"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintEnd_toStartOf="@id/toggle_video"/>
+
+                 <ImageView
+                     android:onClick="@{() -> viewModel.toggleVideo()}"
+                     android:id="@+id/toggle_video"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:enabled="@{!viewModel.isPaused &amp;&amp; !viewModel.isPausedByRemote &amp;&amp; !viewModel.videoUpdateInProgress &amp;&amp; (!viewModel.conferenceModel.isCurrentCallInConference || viewModel.conferenceModel.conferenceLayout != ConferenceViewModel.AUDIO_ONLY_LAYOUT)}"
+                     android:visibility="@{viewModel.hideVideo ? View.GONE : View.VISIBLE}"
+                     android:src="@{viewModel.isSendingVideo ? @drawable/video_camera : @drawable/video_camera_slash, default=@drawable/video_camera}"
+                     android:background="@drawable/in_call_button_background_red"
+                     android:contentDescription="@string/content_description_toggle_video"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/hang_up"
+                     app:layout_constraintEnd_toStartOf="@id/toggle_mute_mic" />
+
+                 <com.google.android.material.progressindicator.CircularProgressIndicator
+                     android:id="@+id/video_update_in_progress"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:visibility="@{viewModel.videoUpdateInProgress ? View.VISIBLE : View.GONE}"
+                     android:indeterminate="true"
+                     app:indicatorColor="?attr/color_main1_500"
+                     app:layout_constraintTop_toTopOf="@id/toggle_video"
+                     app:layout_constraintBottom_toBottomOf="@id/toggle_video"
+                     app:layout_constraintStart_toStartOf="@id/toggle_video"
+                     app:layout_constraintEnd_toEndOf="@id/toggle_video"/>
+
+                 <org.wadophone.ui.call.view.VuMeterView
+                     android:id="@+id/record_volume_vu_meter"
+                     android:onClick="@{() -> viewModel.toggleMuteMicrophone()}"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:background="@drawable/in_call_button_background_red"
+                     vuMeterPercentage="@{viewModel.microphoneRecordingVolume}"
+                     app:layout_constraintTop_toTopOf="@id/toggle_mute_mic"
+                     app:layout_constraintBottom_toBottomOf="@id/toggle_mute_mic"
+                     app:layout_constraintStart_toStartOf="@id/toggle_mute_mic"
+                     app:layout_constraintEnd_toEndOf="@id/toggle_mute_mic" />
+
+                 <ImageView
+                     android:id="@+id/toggle_mute_mic"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@{viewModel.isMicrophoneMuted ? @drawable/microphone_slash : @drawable/microphone, default=@drawable/microphone}"
+                     android:contentDescription="@string/content_description_toggle_microphone"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/toggle_video"
+                     app:layout_constraintEnd_toStartOf="@id/change_audio_output" />
+
+                 <org.wadophone.ui.call.view.VuMeterView
+                     android:id="@+id/playback_volume_vu_meter"
+                     android:onClick="@{() -> viewModel.changeAudioOutputDevice()}"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:background="@drawable/in_call_button_background_red"
+                     vuMeterPercentage="@{viewModel.playbackVolume}"
+                     app:layout_constraintTop_toTopOf="@id/change_audio_output"
+                     app:layout_constraintBottom_toBottomOf="@id/change_audio_output"
+                     app:layout_constraintStart_toStartOf="@id/change_audio_output"
+                     app:layout_constraintEnd_toEndOf="@id/change_audio_output" />
+
+                 <ImageView
+                     android:id="@+id/change_audio_output"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@{viewModel.isHdmiEnabled ? @drawable/monitor : viewModel.isHearingAidEnabled ? @drawable/ear : viewModel.isHeadsetEnabled ? @drawable/headset : viewModel.isBluetoothEnabled ? @drawable/bluetooth : viewModel.isSpeakerEnabled ? @drawable/speaker_high : @drawable/speaker_slash, default=@drawable/speaker_slash}"
+                     android:contentDescription="@string/content_description_change_output_audio_device"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/toggle_mute_mic"
+                     app:layout_constraintEnd_toStartOf="@id/open_door_main" />
+
+                 <ImageView
+                     android:id="@+id/open_door_main"
+                     android:onClick="@{() -> viewModel.openDoor()}"
+                     android:enabled="@{!viewModel.isPaused &amp;&amp; !viewModel.isPausedByRemote}"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@drawable/door_open"
+                     android:background="@drawable/in_call_button_background_red"
+                     android:contentDescription="@string/content_description_open_door"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/change_audio_output"
+                     app:layout_constraintEnd_toEndOf="parent" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:id="@+id/actions_off_group"
+                 android:visibility="@{!viewModel.showDoorOpenerButton ? View.VISIBLE : View.GONE}"
+                 android:layout_width="0dp"
+                 android:layout_height="0dp"
+                 app:layout_constraintTop_toBottomOf="@id/call_actions_handle"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent">
+
+                 <!-- ################ 4-buttons set (door opener hidden) ################ -->
+                 <!-- Positions/sizes/margins here intentionally match call_ended_actions.xml -->
+
+                 <ImageView
+                     android:onClick="@{() -> viewModel.hangUp()}"
+                     android:id="@+id/hang_up_off"
+                     android:layout_width="@dimen/call_hang_up_wide_button_width"
+                     android:layout_height="@dimen/call_button_size"
+                     android:layout_marginStart="@dimen/call_actions_row_side_margin"
+                     android:paddingStart="@dimen/call_hang_up_wide_button_horizontal_padding"
+                     android:paddingEnd="@dimen/call_hang_up_wide_button_horizontal_padding"
+                     android:paddingTop="@dimen/call_button_icon_padding"
+                     android:paddingBottom="@dimen/call_button_icon_padding"
+                     android:src="@drawable/phone_disconnect"
+                     android:contentDescription="@string/content_description_hang_up_call"
+                     android:background="@drawable/squircle_red_button_background"
+                     app:tint="@color/bc_white"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"/>
+
+                 <ImageView
+                     android:onClick="@{() -> viewModel.toggleVideo()}"
+                     android:id="@+id/toggle_video_off"
+                     android:visibility="@{viewModel.hideVideo ? View.GONE : View.VISIBLE}"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:layout_marginEnd="@dimen/call_actions_row_side_margin"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:enabled="@{!viewModel.isPaused &amp;&amp; !viewModel.isPausedByRemote &amp;&amp; !viewModel.videoUpdateInProgress &amp;&amp; (!viewModel.conferenceModel.isCurrentCallInConference || viewModel.conferenceModel.conferenceLayout != ConferenceViewModel.AUDIO_ONLY_LAYOUT)}"
+                     android:src="@{viewModel.isSendingVideo ? @drawable/video_camera : @drawable/video_camera_slash, default=@drawable/video_camera}"
+                     android:background="@drawable/in_call_button_background_red"
+                     android:contentDescription="@string/content_description_toggle_video"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintHorizontal_chainStyle="packed"
+                     app:layout_constraintHorizontal_bias="1"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/hang_up_off"
+                     app:layout_constraintEnd_toStartOf="@id/toggle_mute_mic_off" />
+
+                 <com.google.android.material.progressindicator.CircularProgressIndicator
+                     android:id="@+id/video_update_in_progress_off"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:visibility="@{viewModel.videoUpdateInProgress ? View.VISIBLE : View.GONE}"
+                     android:indeterminate="true"
+                     app:indicatorColor="?attr/color_main1_500"
+                     app:layout_constraintTop_toTopOf="@id/toggle_video_off"
+                     app:layout_constraintBottom_toBottomOf="@id/toggle_video_off"
+                     app:layout_constraintStart_toStartOf="@id/toggle_video_off"
+                     app:layout_constraintEnd_toEndOf="@id/toggle_video_off"/>
+
+                 <org.wadophone.ui.call.view.VuMeterView
+                     android:id="@+id/record_volume_vu_meter_off"
+                     android:onClick="@{() -> viewModel.toggleMuteMicrophone()}"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:background="@drawable/in_call_button_background_red"
+                     vuMeterPercentage="@{viewModel.microphoneRecordingVolume}"
+                     app:layout_constraintTop_toTopOf="@id/toggle_mute_mic_off"
+                     app:layout_constraintBottom_toBottomOf="@id/toggle_mute_mic_off"
+                     app:layout_constraintStart_toStartOf="@id/toggle_mute_mic_off"
+                     app:layout_constraintEnd_toEndOf="@id/toggle_mute_mic_off" />
+
+                 <ImageView
+                     android:id="@+id/toggle_mute_mic_off"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:layout_marginEnd="@dimen/call_actions_row_side_margin"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@{viewModel.isMicrophoneMuted ? @drawable/microphone_slash : @drawable/microphone, default=@drawable/microphone}"
+                     android:contentDescription="@string/content_description_toggle_microphone"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/toggle_video_off"
+                     app:layout_constraintEnd_toStartOf="@id/change_audio_output_off" />
+
+                 <org.wadophone.ui.call.view.VuMeterView
+                     android:id="@+id/playback_volume_vu_meter_off"
+                     android:onClick="@{() -> viewModel.changeAudioOutputDevice()}"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:background="@drawable/in_call_button_background_red"
+                     vuMeterPercentage="@{viewModel.playbackVolume}"
+                     app:layout_constraintTop_toTopOf="@id/change_audio_output_off"
+                     app:layout_constraintBottom_toBottomOf="@id/change_audio_output_off"
+                     app:layout_constraintStart_toStartOf="@id/change_audio_output_off"
+                     app:layout_constraintEnd_toEndOf="@id/change_audio_output_off" />
+
+                                  <ImageView
+                     android:id="@+id/change_audio_output_off"
+                     android:layout_width="@dimen/call_button_size"
+                     android:layout_height="@dimen/call_button_size"
+                     android:layout_marginEnd="@dimen/call_actions_row_side_margin"
+                     android:padding="@dimen/call_button_icon_padding"
+                     android:src="@{viewModel.isHdmiEnabled ? @drawable/monitor : viewModel.isHearingAidEnabled ? @drawable/ear : viewModel.isHeadsetEnabled ? @drawable/headset : viewModel.isBluetoothEnabled ? @drawable/bluetooth : viewModel.isSpeakerEnabled ? @drawable/speaker_high : @drawable/speaker_slash, default=@drawable/speaker_slash}"
+                     android:contentDescription="@string/content_description_change_output_audio_device"
+                     app:tint="@color/in_call_button_tint_color"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintStart_toEndOf="@id/toggle_mute_mic_off"
+                     app:layout_constraintEnd_toEndOf="parent" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
