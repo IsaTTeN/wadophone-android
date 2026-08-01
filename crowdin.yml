@@ -1,13 +1,3 @@
 files:
   - source: /app/src/main/res/values/strings.xml
-    translation: /app/src/main/res/values-%two_letters_code%/strings.xml
-
-  - source: /app/src/main/res/values/strings.xml
-    translation: /app/src/main/res/values-pt-rBR/strings.xml
-    export_languages:
-      - pt-BR
-
-  - source: /app/src/main/res/values/strings.xml
-    translation: /app/src/main/res/values-zh-rCN/strings.xml
-    export_languages:
-      - zh-CN
+    translation: /app/src/main/res/values-%android_code%/strings.xml
