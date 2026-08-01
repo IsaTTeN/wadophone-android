@@ -1,98 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="transparent_color">#00000000</color>
-    <color name="bc_black">#000000</color>
-    <color name="bc_white">#FFFFFF</color>
-    <color name="dialog_background">#99000000</color><!-- 60% opacity -->
-    <color name="shadow">#10000000</color>
-    <color name="vu_meter">#3CFFFFFF</color>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="five">5dp</dimen>
 
-    <color name="background_color_dark_mode">#191919</color>
-    <color name="background_color_alt_dark_mode">#303030</color>
+    <dimen name="screen_bottom_margin">10dp</dimen>
 
-    <color name="red_main_100">#FBDEDE</color>
-    <color name="red_main_500">#D32F2F</color>
+    <dimen name="landscape_nav_bar_width">80dp</dimen>
+    <dimen name="sliding_pane_left_fragment_width">350dp</dimen>
+    <dimen name="sliding_pane_right_fragment_width">300dp</dimen>
 
-    <color name="gray_main2_100">#EEF6F8</color>
-    <color name="gray_main2_200">#DFECF2</color>
-    <color name="gray_main2_300">#C0D1D9</color>
-    <color name="gray_main2_400">#9AABB5</color>
-    <color name="gray_main2_500">#6C7A87</color>
-    <color name="gray_main2_600">#4E6074</color>
-    <color name="gray_main2_700">#364860</color>
-    <color name="gray_main2_800">#22334D</color>
-    <color name="gray_main2_900">#37475A</color>
+    <dimen name="small_icon_size">14dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="large_icon_size">32dp</dimen>
+    <dimen name="big_icon_size">48dp</dimen>
+    <dimen name="welcome_icon_size">100dp</dimen>
+    <dimen name="assistant_title_top_margin">30dp</dimen>
 
-    <color name="gray_100">#F9F9F9</color>
-    <color name="gray_200">#EDEDED</color>
-    <color name="gray_200_night">#1F1F1F</color>
-    <color name="gray_300">#C9C9C9</color>
-    <color name="gray_300_alpha_40">#66C9C9C9</color>
-    <color name="gray_400">#949494</color>
-    <color name="gray_500">#4E4E4E</color>
-    <color name="gray_600">#2E3030</color>
-    <color name="gray_700">#383939</color>
-    <color name="gray_800">#0F0F0F</color>
-    <color name="gray_900">#070707</color>
+    <dimen name="avatar_bubble_size">30dp</dimen>
+    <dimen name="avatar_list_cell_size">45dp</dimen>
+    <dimen name="avatar_favorite_list_cell_size">50dp</dimen>
+    <dimen name="avatar_big_size">100dp</dimen>
+    <dimen name="avatar_in_call_size">120dp</dimen>
 
-    <color name="red_danger_100">#FBE9E9</color>
-    <color name="red_danger_500">#DD5F5F</color>
-    <color name="red_danger_500_night">#E17474</color>
-    <color name="red_danger_600">#B03A3A</color>
-    <color name="red_danger_700">#9E3548</color>
-    <color name="red_danger_700_night">#B13B51</color>
-    <color name="red_danger_900">#723333</color>
-    <color name="red_danger_900_night">#843B3B</color>
+    <dimen name="avatar_bubble_presence_badge_size">8dp</dimen>
+    <dimen name="avatar_presence_badge_size">12dp</dimen>
+    <dimen name="avatar_presence_badge_in_call_size">26dp</dimen>
+    <dimen name="avatar_presence_badge_padding">2dp</dimen>
+    <dimen name="avatar_presence_badge_end_margin">3dp</dimen>
+    <dimen name="avatar_presence_badge_big_size">22dp</dimen>
+    <dimen name="avatar_presence_badge_big_padding">3dp</dimen>
+    <dimen name="avatar_presence_badge_big_end_margin">5dp</dimen>
+    <dimen name="avatar_presence_badge_in_call_end_margin">6dp</dimen>
 
-    <color name="green_success_100">#E4F4EC</color>
-    <color name="green_success_200">#ACF5C1</color>
-    <color name="green_success_200_night">#0D6A27</color>
-    <color name="green_success_500">#4FAE80</color>
-    <color name="green_success_500_night">#60B78D</color>
-    <color name="green_success_700">#377D71</color>
-    <color name="green_success_700_night">#3F8F81</color>
-    <color name="green_success_900">#2A7050</color>
+    <dimen name="avatar_trust_border_width">5dp</dimen>
+    <dimen name="avatar_large_trust_border_width">3dp</dimen>
 
-    <color name="blue_info_500">#4AA8FF</color>
-    <color name="blue_info_500_night">#64B4FF</color>
+    <dimen name="avatar_initials_text_size">16sp</dimen>
+    <dimen name="avatar_initials_bubble_text_size">14sp</dimen>
+    <dimen name="avatar_initials_big_text_size">21sp</dimen>
+    <dimen name="avatar_initials_call_text_size">36sp</dimen>
 
-    <color name="orange_plain_text_security_warning_600">#AF9308</color>
-    <color name="orange_warning_100">#F8F1D4</color>
-    <color name="orange_warning_100_night">#d6aa28</color>
-    <color name="orange_warning_600">#DBB820</color>
-    <color name="orange_warning_600_night">#E1C133</color>
-    <color name="orange_warning_900">#776208</color>
+    <dimen name="selected_participant_cell_height">90dp</dimen>
 
-    <color name="gray_offline_100">#E9EDF1</color>
-    <color name="gray_offline_900">#37475A</color>
+    <dimen name="primary_secondary_buttons_label_padding">11dp</dimen>
+    <dimen name="primary_secondary_buttons_label_start_end_padding">20dp</dimen>
+    <dimen name="tertiary_buttons_label_top_bottom_padding">6dp</dimen>
+    <dimen name="tertiary_buttons_label_start_end_padding">12dp</dimen>
+    <dimen name="dialog_top_bottom_margin">20dp</dimen>
 
-    <color name="gradient_progress">#80FFFFFF</color>
+    <dimen name="top_bar_rounded_corner_radius">20dp</dimen>
+    <dimen name="top_list_item_rounded_corner_radius">20dp</dimen>
+    <dimen name="top_bar_shadow_height">54dp</dimen>
+    <dimen name="top_bar_height">55dp</dimen>
+    <dimen name="toast_top_margin">70dp</dimen> <!-- 15dp + top_bar_height -->
+    <dimen name="section_max_width">400dp</dimen>
+    <dimen name="toast_max_width">400dp</dimen>
+    <dimen name="toast_text_max_width">350dp</dimen>
+    <dimen name="button_max_width">400dp</dimen>
+    <dimen name="dialog_max_width">400dp</dimen>
+    <dimen name="text_input_max_width">400dp</dimen>
+    <dimen name="emoji_list_max_width">400dp</dimen>
+    <dimen name="popup_menu_width">250dp</dimen>
+    <dimen name="popup_menu_padding">10dp</dimen>
+    <dimen name="bottom_nav_bar_label_text_size">11sp</dimen>
 
-    <color name="terracotta_main_100">#F2D2C7</color>
-    <color name="terracotta_main_500">#C86B45</color>
+    <dimen name="call_remote_video_top_margin">70dp</dimen> <!-- Size of top text + top & bottom margins -->
+    <dimen name="call_main_actions_menu_height">110dp</dimen>
+    <dimen name="call_all_actions_menu_height">345dp</dimen> <!-- sum of above two -->
+    <dimen name="call_main_actions_menu_margin">115dp</dimen>
+    <dimen name="call_round_corners_texture_view_radius">20dp</dimen>
+    <dimen name="call_pip_round_corners_texture_view_radius">5dp</dimen>
+        <dimen name="call_button_size">55dp</dimen>
+        <dimen name="call_hang_up_wide_button_width">84dp</dimen>
+    <dimen name="call_hang_up_wide_button_horizontal_padding">30dp</dimen>
+    <dimen name="call_actions_row_side_margin">16dp</dimen>
+    <dimen name="sliding_accept_decline_call_margin">10dp</dimen>
+    <dimen name="call_button_icon_padding">15dp</dimen>
+    <dimen name="call_dtmf_button_size">65dp</dimen>
+    <dimen name="call_dtmf_button_max_width">120dp</dimen>
+    <dimen name="call_extra_button_top_margin">30dp</dimen>
 
-    <color name="lavender_main_100">#E9E7F2</color>
-    <color name="lavender_main_500">#7F79B5</color>
+    <dimen name="call_video_preview_max_size">200dp</dimen>
+    <dimen name="call_video_preview_pip_max_size">45dp</dimen>
 
-    <color name="honey_main_100">#FBFCE9</color>
-    <color name="honey_main_500">#D9A441</color>
+    <dimen name="call_conference_audio_only_miniature_height">100dp</dimen>
+    <dimen name="call_conference_active_speaker_miniature_size">124dp</dimen>
 
-    <color name="burgundy_main_100">#F6BBC3</color>
-    <color name="burgundy_main_500">#7A1E39</color>
+    <dimen name="meeting_list_decoration_height">66dp</dimen>
+    <dimen name="meeting_margin">8dp</dimen>
 
-    <color name="mint_main_100">#DEF2E8</color>
-    <color name="mint_main_500">#7AC9A1</color>
+    <dimen name="chat_bubble_grouped_top_margin">2dp</dimen>
+    <dimen name="chat_bubble_top_margin">8dp</dimen>
+    <dimen name="chat_bubble_grouped_bottom_margin">2dp</dimen>
+    <dimen name="chat_bubble_bottom_margin">8dp</dimen>
+    <dimen name="chat_bubble_text_size">14sp</dimen>
+    <dimen name="chat_bubble_emoji_only_text_size">45sp</dimen>
+    <dimen name="chat_bubble_long_press_emoji_reaction_size">25dp</dimen>
+    <dimen name="chat_bubble_big_image_max_size">350dp</dimen> <!-- (87 * 4)  -->
+    <dimen name="chat_bubble_grid_file_size">87dp</dimen>
+    <dimen name="chat_bubble_single_file_width">178dp</dimen> <!-- (87 + 2) * 2  -->
+    <dimen name="chat_bubble_meeting_invite_width">271dp</dimen>
+    <dimen name="chat_bubble_voice_record_width">230dp</dimen>
+    <dimen name="chat_bubble_max_reply_width">271dp</dimen>
+    <dimen name="chat_bubble_images_rounded_corner_radius">5dp</dimen>
+    <dimen name="chat_bubble_start_margin_when_avatar_displayed">10dp</dimen>
+    <dimen name="chat_conversation_header_avatar_start_margin_if_back_button">5dp</dimen>
+    <dimen name="chat_conversation_header_avatar_start_margin_if_no_back_button">15dp</dimen>
+    <dimen name="unread_count_indicator_size">24dp</dimen>
+    <dimen name="chat_documents_list_padding_top_bottom">5dp</dimen>
+    <dimen name="chat_documents_list_padding_start_end">10dp</dimen>
 
-    <color name="coral_main_100">#FFD3D6</color>
-    <color name="coral_main_500">#F26B5E</color>
+    <dimen name="chat_room_emoji_picker_height">300dp</dimen>
+    <dimen name="chat_room_participants_list_max_height">200dp</dimen>
+    <dimen name="chat_bubble_emoji_picker_height">425dp</dimen>
 
-    <color name="plum_main_100">#DBBED9</color>
-    <color name="plum_main_500">#9B4F96</color>
+    <dimen name="spinner_start_padding">15dp</dimen>
+    <dimen name="spinner_end_padding">30dp</dimen>
+    <dimen name="spinner_caret_end_margin">15dp</dimen>
 
-    <color name="titanium_main_100">#D9D9D9</color>
-    <color name="titanium_main_500">#8A939B</color>
-
-    <color name="mineral_blue_main_100">#C5E0F3</color>
-    <color name="mineral_blue_main_500">#669ED7</color>
-
+    <integer name="media_columns">4</integer>
 </resources>
