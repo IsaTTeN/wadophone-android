@@ -342,7 +342,7 @@
     <string name="website_terms_and_conditions_url">https://linphone.org/en/terms-of-use</string>
     <string name="web_platform_register_email_url">https://subscribe.linphone.org/register/email</string>
     <string name="web_platform_forgotten_password_url">https://subscribe.linphone.org</string>
-    <string name="website_translate_weblate_url">https://weblate.linphone.org/</string>
+    <string name="website_translate_weblate_url">https://crowdin.com/project/wadophone</string>
     <string name="website_open_source_licences_usage_url" formatted="false">https://wiki.linphone.org/xwiki/wiki/public/view/Linphone/Third%20party%20components%20/#Hlinphone-android</string>
     <string name="conversation_end_to_end_encrypted_bottom_sheet_link"><u>https://linphone.org/en/features/#security</u></string>
     <string name="conversation_one_to_one_hidden_subject">Asunto oculto</string>
