@@ -175,6 +175,8 @@
     <string name="help_about_check_for_update">检查新版本更新</string>
     <string name="help_about_contribute_translations_title">在&appName;上投稿翻译</string>
     <string name="help_about_contribute_translations_subtitle">帮助尽可能多的人访问应用程序。</string>
+    <string name="help_about_github_title">Follow the project on GitHub</string>
+    <string name="help_about_github_subtitle">Check out the source code, report issues and follow development.</string>
     <string name="help_about_advanced_title">高级</string>
     <string name="help_version_up_to_date_toast_message">版本是最新的</string>
     <string name="help_error_checking_version_toast_message">检查更新时出错</string>
