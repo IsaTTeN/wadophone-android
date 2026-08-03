@@ -81,6 +81,11 @@ class HelpFragment : GenericMainFragment() {
             openUrlInBrowser(url)
         }
 
+        binding.setGithubClickListener {
+            val url = getString(R.string.website_github_project_url)
+            openUrlInBrowser(url)
+        }
+
         viewModel.newVersionAvailableEvent.observe(viewLifecycleOwner) {
             it.consume { pair ->
                 val version = pair.first

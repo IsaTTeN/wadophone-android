@@ -150,6 +150,8 @@
     <string name="help_about_version_title">Versión</string>
     <string name="help_about_check_for_update">Comprobar actualización</string>
     <string name="help_about_contribute_translations_subtitle">Ayude a que la aplicación sea accesible para la mayor cantidad de personas posible.</string>
+    <string name="help_about_github_title">Sigue el proyecto en GitHub</string>
+    <string name="help_about_github_subtitle">Consulta el código fuente, reporta problemas y sigue el desarrollo.</string>
     <string name="help_about_advanced_title">Avanzado</string>
     <string name="help_version_up_to_date_toast_message">Su versión esta actualizada</string>
     <string name="help_dialog_update_available_title">Actualización disponible</string>
@@ -338,11 +340,12 @@
     <string name="website_contact_url">https://linphone.org/contact</string>
     <string name="website_download_url">https://linphone.org/linphone-softphone</string>
     <string name="website_user_guide_url">https://linphone.org/en/docs/</string>
-    <string name="website_privacy_policy_url">https://linphone.org/en/privacy-policy</string>
-    <string name="website_terms_and_conditions_url">https://linphone.org/en/terms-of-use</string>
+    <string name="website_privacy_policy_url">https://github.com/IsaTTeN/wadophone-android/blob/main/PRIVACY.md</string>
+    <string name="website_terms_and_conditions_url">https://github.com/IsaTTeN/wadophone-android/blob/main/TERMS.md</string>
     <string name="web_platform_register_email_url">https://subscribe.linphone.org/register/email</string>
     <string name="web_platform_forgotten_password_url">https://subscribe.linphone.org</string>
     <string name="website_translate_weblate_url">https://crowdin.com/project/wadophone</string>
+    <string name="website_github_project_url">https://github.com/IsaTTeN/wadophone-android</string>
     <string name="website_open_source_licences_usage_url" formatted="false">https://wiki.linphone.org/xwiki/wiki/public/view/Linphone/Third%20party%20components%20/#Hlinphone-android</string>
     <string name="conversation_end_to_end_encrypted_bottom_sheet_link"><u>https://linphone.org/en/features/#security</u></string>
     <string name="conversation_one_to_one_hidden_subject">Asunto oculto</string>

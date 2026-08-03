@@ -107,7 +107,7 @@ android {
         minSdk = 28
         targetSdk = 37
         versionCode = 1
-        versionName = "1.0.0-alpha"
+        versionName = "1.0.0"
 
         manifestPlaceholders["appAuthRedirectScheme"] = packageName
 
@@ -184,6 +184,9 @@ android {
                 "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName("release")
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
 
             val appVersion = gitVersion
             val appBranch = gitBranch

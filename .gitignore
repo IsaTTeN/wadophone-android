@@ -10,5 +10,8 @@ app/debug/
 app/release/
 .idea/
 app/wadophone-release.keystore
+*.jks
+*.keystore
+keystore.properties
 .kotlin/
 .claude/
