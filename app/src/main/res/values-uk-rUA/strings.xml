@@ -187,6 +187,8 @@
     <string name="help_about_check_for_update">Перевірити оновлення</string>
     <string name="help_about_contribute_translations_title">Зробіть свій внесок у переклад &appName;</string>
     <string name="help_about_contribute_translations_subtitle">Допоможіть зробити застосунок доступним для якомога більшої кількості людей.</string>
+    <string name="help_about_github_title">Follow the project on GitHub</string>
+    <string name="help_about_github_subtitle">Check out the source code, report issues and follow development.</string>
     <string name="help_about_advanced_title">Розширений</string>
     <string name="help_version_up_to_date_toast_message">Ваша версія актуальна</string>
     <string name="help_error_checking_version_toast_message">Під час перевірки оновлень сталася помилка</string>
