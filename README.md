@@ -142,7 +142,9 @@ This fork ships without a `google-services.json` file (it was tied to Linphone's
 
 ## Translations
 
-Translation files live directly under `app/src/main/res/values-<locale>/strings.xml`, maintained as regular resource files (this fork doesn't use Linphone's Weblate instance). Contributions welcome via pull request.
+Translations are managed on Crowdin: https://crowdin.com/project/wadophone
+
+Translation files live under `app/src/main/res/values-<locale>/strings.xml`, kept in sync with Crowdin via its GitHub integration, which opens a pull request whenever new translations are approved.
 
 ## Create an APK with a different package name
 

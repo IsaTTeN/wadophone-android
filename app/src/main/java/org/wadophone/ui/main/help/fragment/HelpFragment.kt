@@ -86,6 +86,11 @@ class HelpFragment : GenericMainFragment() {
             openUrlInBrowser(url)
         }
 
+        binding.setPrivacyPolicyClickListener {
+            val url = getString(R.string.website_privacy_policy_url)
+            openUrlInBrowser(url)
+        }
+
         viewModel.newVersionAvailableEvent.observe(viewLifecycleOwner) {
             it.consume { pair ->
                 val version = pair.first
