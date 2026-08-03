@@ -179,6 +179,8 @@
     <string name="help_about_check_for_update">Comprobar actualización</string>
     <string name="help_about_contribute_translations_title">Contribuir a la traducción de &appName;</string>
     <string name="help_about_contribute_translations_subtitle">Ayude a que la aplicación sea accesible para la mayor cantidad de personas posible.</string>
+    <string name="help_about_github_title">Follow the project on GitHub</string>
+    <string name="help_about_github_subtitle">Check out the source code, report issues and follow development.</string>
     <string name="help_about_advanced_title">Avanzado</string>
     <string name="help_version_up_to_date_toast_message">Su versión esta actualizada</string>
     <string name="help_error_checking_version_toast_message">Se produjo un error al buscar actualizaciones</string>
