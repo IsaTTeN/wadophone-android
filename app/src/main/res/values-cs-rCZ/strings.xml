@@ -187,6 +187,8 @@
     <string name="help_about_check_for_update">Kontrola aktualizací</string>
     <string name="help_about_contribute_translations_title">Příspět do překladu &appName;</string>
     <string name="help_about_contribute_translations_subtitle">Pomozte zpřístupnit aplikaci co největšímu počtu lidí.</string>
+    <string name="help_about_github_title">Follow the project on GitHub</string>
+    <string name="help_about_github_subtitle">Check out the source code, report issues and follow development.</string>
     <string name="help_about_advanced_title">Pokročilé</string>
     <string name="help_version_up_to_date_toast_message">Vaše verze je aktuální</string>
     <string name="help_error_checking_version_toast_message">Během kontroly aktualizací nastala chyba</string>
