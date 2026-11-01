@@ -1173,6 +1173,16 @@ class CoreContext
             Log.i(
                 "$TAG Enabling video on call params to prevent audio-only layout when answering"
             )
+        } else if (corePreferences.doorBellEnabled && DoorBellUtils.matchesConfiguredDoorbellExtension(
+                call.remoteAddress.asStringUriOnly(),
+                corePreferences.doorBellExtension
+            )
+        ) {
+            params.isVideoEnabled = true
+            params.videoDirection = MediaDirection.RecvOnly
+            Log.i(
+                "$TAG Incoming doorbell call detected, enabling remote video only for [${call.remoteAddress.asStringUriOnly()}]"
+            )
         } else if (autoAnswer) {
             val videoBothWays = corePreferences.autoAnswerVideoCallsWithVideoDirectionSendReceive
             if (videoBothWays) {

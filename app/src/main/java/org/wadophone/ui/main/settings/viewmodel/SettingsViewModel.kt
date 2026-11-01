@@ -173,6 +173,10 @@ class SettingsViewModel
 
     val doorOpenerButtonEnabled = MutableLiveData<Boolean>()
 
+    val doorBellEnabled = MutableLiveData<Boolean>()
+
+    val doorBellExtension = MutableLiveData<String>()
+
     val autoShowCallActionsBar = MutableLiveData<Boolean>()
 
     val showThemeSelector = MutableLiveData<Boolean>()
@@ -383,6 +387,8 @@ class SettingsViewModel
                         autoShowDialpad.postValue(corePreferences.automaticallyShowDialpad)
             doorOpenerCode.postValue(corePreferences.doorOpenerDtmfSequence)
             doorOpenerButtonEnabled.postValue(corePreferences.doorOpenerButtonEnabled)
+            doorBellEnabled.postValue(corePreferences.doorBellEnabled)
+            doorBellExtension.postValue(corePreferences.doorBellExtension)
             autoShowCallActionsBar.postValue(corePreferences.autoShowCallActionsBar)
             theme.postValue(corePreferences.darkMode)
             color.postValue(corePreferences.themeMainColor)
@@ -788,6 +794,15 @@ class SettingsViewModel
     }
 
     @UiThread
+    fun toggleDoorBellEnabled() {
+        val newValue = doorBellEnabled.value == false
+        coreContext.postOnCoreThread {
+            corePreferences.doorBellEnabled = newValue
+            doorBellEnabled.postValue(newValue)
+        }
+    }
+
+    @UiThread
     fun toggleAutoShowCallActionsBar() {
         val newValue = autoShowCallActionsBar.value == false
         coreContext.postOnCoreThread {
@@ -803,6 +818,17 @@ class SettingsViewModel
             if (newCode != corePreferences.doorOpenerDtmfSequence) {
                 corePreferences.doorOpenerDtmfSequence = newCode
                 Log.i("$TAG Updated door opener DTMF sequence to [$newCode]")
+            }
+        }
+    }
+
+    @UiThread
+    fun updateDoorBellExtension() {
+        coreContext.postOnCoreThread {
+            val newExtension = doorBellExtension.value.orEmpty().trim()
+            if (newExtension != corePreferences.doorBellExtension) {
+                corePreferences.doorBellExtension = newExtension
+                Log.i("$TAG Updated doorbell extension to [$newExtension]")
             }
         }
     }

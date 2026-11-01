@@ -1,0 +1,35 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        ".\\gradlew": true,
+        "gradlew": true,
+        "/^powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location 'D:\\\\GitHub\\\\wadophone-android'; \\.\\\\gradlew\\.bat :app:assembleDebug --console=plain\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location 'D:\\\\GitHub\\\\wadophone-android'; \\.\\\\gradlew\\.bat :app:assembleDebug --stacktrace --console=plain\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cmd /c \"cd /d D:\\\\GitHub\\\\wadophone-android && gradlew\\.bat :app:assembleDebug --stacktrace --console=plain > D:\\\\tmp\\\\wadophone-build\\.log 2>&1\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "type": true,
+        "Test-Path": true,
+        "Get-Item": true,
+        "/^cmd /C \"dir /B app\\\\build\\\\outputs\\\\apk\\\\debug 2>nul\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cmd /C \"dir app\\\\build\\\\outputs\\\\apk\\\\debug\\\\wadophone-android-debug-\\.apk\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cmd /C \"dir /B app\\\\build\\\\outputs\\\\apk\\\\debug 2>nul & echo ---- & dir app\\\\build\\\\outputs\\\\apk\\\\debug\\\\wadophone-android-debug-\\.apk 2>nul\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "C:/Users/isatt/AppData/Local/Programs/Python/Python313/python.exe": true,
+        ".\\app\\src\\main\\res\\mipmap-anydpi\\ic_launcher.xml": true
+    }
+}

@@ -229,9 +229,13 @@
     <string name="settings_network_allow_ipv6">Permitir IPv6</string>
     <string name="settings_user_interface_auto_show_call_actions_title">Mostrar automáticamente los botones de la llamada</string>
     <string name="settings_user_interface_auto_show_dialpad_title">Abrir automáticamente el teclado numérico</string>
+    <string name="settings_user_interface_doorbell_section_title">Portero</string>
     <string name="settings_user_interface_door_opener_button_title">Botón de desbloqueo</string>
     <string name="settings_user_interface_door_opener_code_title">Código de desbloqueo</string>
     <string name="settings_user_interface_door_opener_code_hint">ej. 1,2,3</string>
+    <string name="settings_user_interface_doorbell_enabled_title">Modo video del portero</string>
+    <string name="settings_user_interface_doorbell_extension_title">Extensión del portero</string>
+    <string name="settings_user_interface_doorbell_extension_hint">ej. 100</string>
     <string name="settings_user_interface_theme_title">Tema</string>
     <string name="settings_user_interface_dark_theme_label">Tema Oscuro</string>
     <string name="settings_user_interface_light_theme_label">Tema claro</string>

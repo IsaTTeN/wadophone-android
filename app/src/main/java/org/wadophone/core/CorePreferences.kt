@@ -382,6 +382,22 @@ class CorePreferences
             config.setBool("ui", "auto_show_call_actions_bar", value)
         }
 
+    // Whether incoming calls from the configured doorbell extension should automatically enable
+    // remote video while keeping the local camera disabled by default (receive-only)
+    @get:AnyThread @set:WorkerThread
+    var doorBellEnabled: Boolean
+        get() = config.getBool("ui", "door_bell_enabled", false)
+        set(value) {
+            config.setBool("ui", "door_bell_enabled", value)
+        }
+
+    @get:AnyThread @set:WorkerThread
+    var doorBellExtension: String
+        get() = config.getString("ui", "door_bell_extension", "").orEmpty()
+        set(value) {
+            config.setString("ui", "door_bell_extension", value)
+        }
+
     @get:AnyThread @set:WorkerThread
     var themeMainColor: String
         get() = config.getString("ui", "theme_main_color", "orange")!!

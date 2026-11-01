@@ -381,6 +381,7 @@ class SettingsFragment : GenericMainFragment() {
         }
 
         viewModel.updateDoorOpenerCode()
+        viewModel.updateDoorBellExtension()
 
         super.onPause()
     }

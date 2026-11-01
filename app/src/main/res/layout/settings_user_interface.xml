@@ -87,6 +87,19 @@
             app:layout_constraintTop_toBottomOf="@id/auto_show_call_actions_switch" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/section_header_style"
+            android:id="@+id/doorbell_section_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/settings_user_interface_doorbell_section_title"
+            app:layout_constraintTop_toBottomOf="@id/auto_show_dialpad_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/settings_title_style"
             android:id="@+id/door_opener_button_title"
             android:onClick="@{() -> viewModel.toggleDoorOpenerButton()}"
@@ -114,7 +127,7 @@
             android:layout_marginEnd="16dp"
             android:checked="@{viewModel.doorOpenerButtonEnabled}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auto_show_dialpad_switch" />
+            app:layout_constraintTop_toBottomOf="@id/doorbell_section_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/settings_title_padding_style"
@@ -153,18 +166,96 @@
             app:layout_constraintTop_toBottomOf="@id/door_opener_code_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/settings_title_padding_style"
-            android:id="@+id/theme_title"
+            style="@style/settings_title_style"
+            android:id="@+id/doorbell_enabled_title"
+            android:onClick="@{() -> viewModel.toggleDoorBellEnabled()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="10dp"
+            android:text="@string/settings_user_interface_doorbell_enabled_title"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:labelFor="@id/doorbell_enabled_switch"
+            app:layout_constraintTop_toTopOf="@id/doorbell_enabled_switch"
+            app:layout_constraintBottom_toBottomOf="@id/doorbell_enabled_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/doorbell_enabled_switch"/>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            style="@style/material_switch_style"
+            android:id="@+id/doorbell_enabled_switch"
+            android:onClick="@{() -> viewModel.toggleDoorBellEnabled()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:checked="@{viewModel.doorBellEnabled}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/door_opener_code" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/settings_title_padding_style"
+            android:id="@+id/doorbell_extension_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/settings_user_interface_doorbell_extension_title"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:labelFor="@id/doorbell_extension"
+            app:layout_constraintTop_toBottomOf="@id/doorbell_enabled_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            style="@style/default_text_style"
+            android:id="@+id/doorbell_extension"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_text_background"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@={viewModel.doorBellExtension}"
+            android:inputType="text"
+            android:hint="@string/settings_user_interface_doorbell_extension_hint"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintWidth_max="@dimen/text_input_max_width"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/doorbell_extension_title" />
+
+        <View
+            android:id="@+id/doorbell_theme_separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/color_main2_200"
+            app:layout_constraintTop_toBottomOf="@id/doorbell_extension"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/settings_title_padding_style"
+            android:id="@+id/theme_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/settings_user_interface_theme_title"
             android:maxLines="2"
             android:ellipsize="end"
             android:labelFor="@id/theme_spinner"
-            app:layout_constraintTop_toBottomOf="@id/door_opener_code"
+            app:layout_constraintTop_toBottomOf="@id/doorbell_theme_separator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -173,7 +264,9 @@
             android:id="@+id/theme_spinner"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/edit_text_background"
             android:paddingStart="@dimen/spinner_start_padding"
             android:paddingEnd="@dimen/spinner_end_padding"
@@ -182,8 +275,8 @@
             android:popupBackground="@drawable/shape_squircle_white_background"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintTop_toBottomOf="@id/theme_title"
-            app:layout_constraintStart_toStartOf="@id/theme_title"
-            app:layout_constraintEnd_toEndOf="@id/theme_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/theme_spinner_caret"
@@ -218,7 +311,9 @@
             android:id="@+id/color_spinner"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/edit_text_background"
             android:paddingStart="@dimen/spinner_start_padding"
             android:paddingEnd="@dimen/spinner_end_padding"
@@ -227,8 +322,8 @@
             android:popupBackground="@drawable/shape_squircle_white_background"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintTop_toBottomOf="@id/color_title"
-            app:layout_constraintStart_toStartOf="@id/color_title"
-            app:layout_constraintEnd_toEndOf="@id/color_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/color_spinner_caret"

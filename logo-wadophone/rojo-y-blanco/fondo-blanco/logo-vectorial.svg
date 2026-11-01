@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Wadophone">
+  <rect width="512" height="512" fill="#FFFFFF"/>
+  <g transform="translate(256 256) scale(.86) translate(-256 -258)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="92,180 172,390 256,230 340,390 420,180" stroke="#C62828" stroke-width="58"/>
+    <path d="M225.2 165.6A50 50 0 0 1 286.8 165.6M197.5 130.1A95 95 0 0 1 314.5 130.1" stroke="#C62828" stroke-width="24"/>
+  </g>
+</svg>

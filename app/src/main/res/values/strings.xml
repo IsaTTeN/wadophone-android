@@ -335,9 +335,13 @@
     <string name="settings_user_interface_title">User interface</string>
     <string name="settings_user_interface_auto_show_call_actions_title">Automatically show call action buttons</string>
     <string name="settings_user_interface_auto_show_dialpad_title">Automatically open dialpad</string>
+    <string name="settings_user_interface_doorbell_section_title">Doorbell</string>
     <string name="settings_user_interface_door_opener_button_title">Door unlock button</string>
     <string name="settings_user_interface_door_opener_code_title">Door unlock code</string>
     <string name="settings_user_interface_door_opener_code_hint">e.g. 1,2,3</string>
+    <string name="settings_user_interface_doorbell_enabled_title">Doorbell video mode</string>
+    <string name="settings_user_interface_doorbell_extension_title">Doorbell extension</string>
+    <string name="settings_user_interface_doorbell_extension_hint">e.g. 100</string>
     <string name="settings_user_interface_theme_title">Theme</string>
     <string name="settings_user_interface_dark_theme_label">Dark theme</string>
     <string name="settings_user_interface_light_theme_label">Light theme</string>

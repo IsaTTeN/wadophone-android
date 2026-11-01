@@ -10,8 +10,13 @@
     <color name="background_color_dark_mode">#191919</color>
     <color name="background_color_alt_dark_mode">#303030</color>
 
-    <color name="red_main_100">#FBDEDE</color>
-    <color name="red_main_500">#D32F2F</color>
+    <color name="wadophone_brand_blue">#231F5C</color>
+    <color name="wadophone_brand_blue_icon">#7C8DFF</color>
+    <color name="wadophone_brand_blue_light">#E7E7F8</color>
+    <color name="wadophone_brand_yellow">#FFB627</color>
+
+    <color name="red_main_100">@color/wadophone_brand_blue_light</color>
+    <color name="red_main_500">@color/wadophone_brand_blue_icon</color>
 
     <color name="gray_main2_100">#EEF6F8</color>
     <color name="gray_main2_200">#DFECF2</color>
